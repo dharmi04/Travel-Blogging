@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const AddPost = () => {
   const [formData, setFormData] = useState({
@@ -13,12 +14,17 @@ const AddPost = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform any action you need with the form data, such as making an API call to create a new post
-    console.log(formData);
-    // You can add your logic here to send the data to the server or update the state accordingly
+    try{
+      const response = await axios.post("http://localhost:5000/api/posts", formData)
+      
+    console.log("post added successfully", response.data)
+    } catch(error){
+      console.error('Error adding post:', error.message);
+    }
   };
+
 
   return (
     <div className="max-w-md mx-auto my-8">

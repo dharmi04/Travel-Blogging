@@ -14,8 +14,8 @@ const signupUser = async (req, res) => {
         const newUser = new Signup({ username, password: hashedPassword, email });
         const savedUser = await newUser.save();
         
+        req.session.user = { username: savedUser.username, email: savedUser.email };
         const token = createToken(savedUser._id);
-        
         res.status(200).json({ email: savedUser.email, token });
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -42,7 +42,9 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ message: 'Incorrect password.' });
         }
 
+        req.session.user = { username: user.username, email: user.email };
         const token = createToken(user._id);
+
 
         res.status(200).json({ message: 'Login success', user, token });
     } catch (error) {

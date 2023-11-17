@@ -1,13 +1,23 @@
-const express = require('express')
-const {signupUser, loginUser} = require('../Controllers/User-Controller')
-const postController= require('../Controllers/Post-Controller')
+const express = require('express');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const { signupUser, loginUser } = require('../Controllers/User-Controller');
+const postController = require('../Controllers/Post-Controller');
+const { getUserProfile } = require('../Controllers/getUserProfile');
+
+const router = express.Router();
+
+router.use(cookieParser());
+router.use(session({
+  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false }, 
+}));
 
 
-
-const router = express.Router()
-
-router.post('/signup', signupUser)
-router.post('/login', loginUser)
+router.post('/signup', signupUser);
+router.post('/login', loginUser);
 
 // Create a new post
 router.post('/posts', postController.createPost);
@@ -25,6 +35,13 @@ router.put('/posts/:id', postController.updatePostById);
 router.delete('/posts/:id', postController.deletePostById);
 
 
+// Get user profile
+router.get('/profile', getUserProfile);
 
 
-module.exports= router
+  
+
+// Place the /profile route after the verifyToken middleware
+
+
+module.exports = router;
