@@ -1,66 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { IonIcon } from '@ionic/react';
-import items from './data'
+import img1 from '../assets/bg1.jpg';
+import img2 from '../assets/bg2.jpg';
+import img3 from '../assets/bg3.jpg';
+import img4 from '../assets/bg4.jpg';
+import img5 from '../assets/bg5.jpg';
 
-
-const Home = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const Homepage = () => {
+  const images = [img1, img2, img3, img4, img5];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    const slider = document.querySelector('.slider');
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
 
-    function activate(e) {
-      const items = document.querySelectorAll('.item');
-      e.target.matches('.next') && handleNext(items);
-      e.target.matches('.prev') && handlePrev(items);
-    }
-
-    document.addEventListener('click', activate, false);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      document.removeEventListener('click', activate, false);
-    };
-  }, [activeIndex]);
-
-  const handleNext = (items) => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % items.length);
-  };
-
-  const handlePrev = (items) => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
-  };
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, [images.length]);
 
   return (
-    <div className="flex">
-      <main className="w-full relative flex">
-        <ul className="slider overflow-hidden flex-none">
-          {items.map((item, index) => (
-            <li
-              key={index}
-              className={`item bg-cover bg-center h-screen relative transition-transform transform ${
-                index === activeIndex ? 'translate-x-0' : 'translate-x-full'
-              }`}
-              style={{
-                backgroundImage: `url('${item.image}')`,
-              }}
-            >
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                <div className="text-white text-center">
-                  <h2 className="text-3xl font-bold mb-4">{item.title}</h2>
-                  <p className="text-lg">{item.description}</p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="flex flex-col items-end w-1/3">
-          <IonIcon className="btn prev text-5xl text-black cursor-pointer" name="arrow-back-outline" onClick={() => handlePrev(items)} />
-          <IonIcon className="btn next text-2xl text-white cursor-pointer" name="arrow-forward-outline" onClick={() => handleNext(items)} />
+    <div className="body bg-gray-200 overflow-hidden">
+      <div
+        className="container absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 min-h-screen w-full p-50 bg-gray-100 shadow-2xl"
+        style={{
+          backgroundImage: `url(${images[currentImageIndex]})`,
+          backgroundSize: 'cover',
+          transition: 'background-image 1s ease-in-out', // Smooth transition for background image change
+        }}
+      >
+        <div id="slide" className="w-max-content mt-8 w-2/3 p-4 bg-transparent text-white font-s">
+          <p className='text-white text-5xl font-bold  '>Welcome to Wanderlust Chronicles</p>
+          <p className='mt-3 text-xl font-regular'>
+  
+
+Embark on a journey with us, your passport to awe-inspiring landscapes, vibrant cultures, and untold stories. Immerse yourself in the magic of travel as our passionate explorers share tales of wanderlust, hidden gems, and extraordinary experiences. Discover a world beyond borders, one story at a time.
+          </p>
+          {/* <p className='mt-3 text-xl font-bold'>
+            Let Wanderlust Chronicles be your guide, inspiring your next escape and connecting you to a community of fellow adventurers. Unleash the explorer within, and let the world unfold at your fingertips.
+          </p> */}
         </div>
-      </main>
+      </div>
     </div>
   );
 };
 
-export default Home;
+export default Homepage;
+
