@@ -16,15 +16,14 @@ const AddPost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await axios.post("http://localhost:5000/api/posts", formData)
-      
-    console.log("post added successfully", response.data)
-    } catch(error){
+    try {
+      const response = await axios.post("http://localhost:5000/api/posts", formData);
+
+      console.log("post added successfully", response.data);
+    } catch (error) {
       console.error('Error adding post:', error.message);
     }
   };
-
 
   return (
     <div className="max-w-md mx-auto my-8">
@@ -59,7 +58,7 @@ const AddPost = () => {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Add Post

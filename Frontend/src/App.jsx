@@ -6,7 +6,8 @@ import Signup from "./Pages/signup"
 import AddPost from './Pages/AddPost';
 import Homepage from './Pages/Homepage';
 import ProfilePage from './ProfilePage';
-
+import BlogList from './components/BlogList';
+import Home from './Pages/Home';
 
 function App() {
 
@@ -14,11 +15,13 @@ function App() {
     <>
       <Router>
         <Routes>
-        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/addblog" element={<AddPost />} />
           <Route path="/profilepage" element={<ProfilePage />} />
+          <Route path="/allblog" element={<BlogList />} />
+          <Route path="/home" element={<Home />} />
 
         </Routes>
       </Router>
