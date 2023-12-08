@@ -25,7 +25,7 @@ const Signup = () => {
       .post("http://localhost:5000/api/signup", formData)
       .then(response => {
         console.log(response);
-        navigate('/homepage');
+        navigate('/');
       })
       .catch(error => {
         console.error("Signup error:", error);
@@ -88,6 +88,11 @@ const Signup = () => {
             Sign Up
           </button>
         </form>
+        <div className="flex justify-between items-center">
+  <p className="flex-start">Already have an account?</p>
+  <a href="/login" className="flex-end">Login</a>
+</div>
+
       </div>
     </div>
   );

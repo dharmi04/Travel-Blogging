@@ -8,6 +8,7 @@ import Homepage from './Pages/Homepage';
 import ProfilePage from './ProfilePage';
 import BlogList from './components/BlogList';
 import Home from './Pages/Home';
+import FullBlog from './components/FullBlog';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/profilepage" element={<ProfilePage />} />
           <Route path="/allblog" element={<BlogList />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/blog/:id" element={<FullBlog />} />
 
         </Routes>
       </Router>

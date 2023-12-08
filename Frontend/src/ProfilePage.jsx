@@ -10,12 +10,13 @@ const ProfilePage = () => {
       try {
         const token = localStorage.getItem('token');
         const response = await axios.get('http://localhost:5000/api/profile', {
-            withCredentials: true,
+          withCredentials: true,
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-
+  
+        console.log('Response from server:', response);
         setUserData(response.data);
         setLoading(false);
       } catch (error) {
@@ -23,7 +24,7 @@ const ProfilePage = () => {
         setLoading(false);
       }
     };
-
+  
     fetchUserProfile();
   }, []);
 

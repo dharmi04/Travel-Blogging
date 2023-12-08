@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const AddPost = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     desc: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = (value) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      desc: value,
     });
   };
 
@@ -19,17 +23,17 @@ const AddPost = () => {
     try {
       const response = await axios.post("http://localhost:5000/api/posts", formData);
 
-      console.log("post added successfully", response.data);
+      console.log("Post added successfully", response.data);
     } catch (error) {
       console.error('Error adding post:', error.message);
     }
   };
 
   return (
-    <div className="max-w-md mx-auto my-8">
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
+          <label className="block text-sm font-bold mb-2" htmlFor="title">
             Title
           </label>
           <input
@@ -39,26 +43,42 @@ const AddPost = () => {
             placeholder="Enter title"
             name="title"
             value={formData.title}
-            onChange={handleChange}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             required
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="desc">
+          <label className="block text-sm font-bold mb-2" htmlFor="desc">
             Description
           </label>
-          <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="desc"
-            placeholder="Enter description"
-            name="desc"
+          <ReactQuill
             value={formData.desc}
             onChange={handleChange}
+            placeholder="Enter description"
+            modules={{
+              toolbar: [
+                [{ 'header': [1, 2, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                ['link', 'image'],
+                [{ 'align': [] }],
+                ['clean'],
+              ],
+            }}
+            formats={[
+              'header',
+              'bold', 'italic', 'underline', 'strike',
+              'blockquote', 'code-block',
+              'list', 'bullet',
+              'link', 'image',
+              'align',
+            ]}
           />
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Add Post
