@@ -35,7 +35,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="bg-teal-900 min-h-screen flex items-center justify-center">
+    <div className="bg-teal-900 min-h-screen flex items-center justify-center p-10">
       <div className="bg-primary p-8 rounded-md shadow-md max-w-md w-full">
         <h2 className="text-3xl font-semibold mb-5 text-center">Sign Up</h2>
         <form onSubmit={handleSubmit}>

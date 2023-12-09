@@ -30,8 +30,8 @@ const AddPost = () => {
   };
 
   return (
-    <div className=" bg-gray-100 flex items-center justify-center w-full ">
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ">
+    <div className=" bg-teal-900 flex items-center justify-center w-full p-10 ">
+      <form onSubmit={handleSubmit} className="bg-primary shadow-md rounded p-3  ">
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="title">
             Title
@@ -77,9 +77,9 @@ const AddPost = () => {
             ]}
           />
         </div>
-        <div className="flex items-center justify-between pt-10">
+        <div className="flex items-center justify-between md:pt-10 pt-20">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Add Post

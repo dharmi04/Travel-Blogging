@@ -1,17 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { FaBars } from 'react-icons/fa'; // Import the hamburger icon
+import logo from '../assets/logo.png';
 
 const Nav = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   return (
     <div className='p-6'>
-        <div className='flex flex-row space-x-8 text-black font-sans text-xl '>
+      <div className='flex justify-between items-center'>
+        <div>
+          <img src={logo} className='h-12 md:w-40 w-[150px]' alt='Logo' />
+        </div>
+        <div className='hidden md:flex md:space-x-8 font-sans'>
+          <div>Home</div>
+          <a href="/places">Explore Places</a>
+          <div>Latest Blogs</div>
+          <div>Categories</div>
+          <a href="/worldmap">World Map</a>
+          <a href="/signup">Signup</a>
+        </div>
+        <div className='md:hidden'>
+        
+          <FaBars onClick={toggleNav} className='cursor-pointer' />
+        </div>
+
+      </div>
+
+      {/* Responsive Navigation */}
+      {isNavOpen && (
+        <div className='md:hidden mt-2'>
+          <div className='flex flex-col space-y-2'>
             <div>Home</div>
             <div>Explore Places</div>
             <div>Latest Blogs</div>
-            <div>Categories</div>
+            <a>Categories</a>
+            <a href="/signup">Signup</a>
+          </div>
         </div>
+        
+      )}
       
     </div>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

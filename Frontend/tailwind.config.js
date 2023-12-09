@@ -10,7 +10,7 @@ export default {
         Lato:['Lato', 'sans-serif'],
       },
       colors:{
-        "primary": "#8edbc5"
+        "primary": "#D8F3DC",
       },
       transitionDuration: {
         '300': '300ms',

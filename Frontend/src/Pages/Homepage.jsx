@@ -30,10 +30,9 @@ const Homepage = () => {
           transition: 'background-image 1s ease-in-out', // Smooth transition for background image change
         }}
       >
-         <Nav />
-        <div id="slide" className="w-max-content mt-8 w-2/3 p-6 bg-transparent text-white font-s">
-          <p className='text-white text-5xl font-bold font-Lato  '>Welcome to Wanderlust Chronicles</p>
-          <p className='mt-3 text-xl font-regular font-serif'>Embark on a journey with us, your passport to awe-inspiring landscapes, vibrant cultures, and untold stories. Immerse yourself in the magic of travel as our passionate explorers share tales of wanderlust, hidden gems, and extraordinary experiences. Discover a world beyond borders, one story at a time.
+        <div id="slide" className=" mt-8 w-3/4 p-6 bg-transparent text-white font-s">
+          <p className='text-white md:text-5xl text-4xl font-bold font-Lato  '>Welcome to Wanderlust Chronicles</p>
+          <p className='mt-3 md:text-xl text-lg font-regular font-serif w-full'>Embark on a journey with us, your passport to awe-inspiring landscapes, vibrant cultures, and untold stories. Immerse yourself in the magic of travel as our passionate explorers share tales of wanderlust, hidden gems, and extraordinary experiences. Discover a world beyond borders, one story at a time.
           </p>
         </div>
 
