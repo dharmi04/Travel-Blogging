@@ -18,6 +18,7 @@ const Nav = () => {
         <div className='hidden md:flex md:space-x-8 font-sans'>
           <div>Home</div>
           <a href="/places">Explore Places</a>
+          <a href="/photogallery">Photo Gallery</a>
           <div>Latest Blogs</div>
           <div>Categories</div>
           <a href="/worldmap">World Map</a>
@@ -35,7 +36,8 @@ const Nav = () => {
         <div className='md:hidden mt-2'>
           <div className='flex flex-col space-y-2'>
             <div>Home</div>
-            <div>Explore Places</div>
+            <a href="/places">Explore Places</a>
+            <a href="/photogallery">Photo Gallery</a>
             <div>Latest Blogs</div>
             <a>Categories</a>
             <a href="/signup">Signup</a>

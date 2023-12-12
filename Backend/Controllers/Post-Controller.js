@@ -64,10 +64,48 @@ const deletePostById = async(req,res)=>{
     }
 }
 
+const likePost = async (req, res) => {
+    try {
+      const post = await Post.findById(req.params.id);
+      if (!post) {
+        return res.status(404).json({ error: 'Post not found' });
+      }
+  
+      post.likes += 1;
+      const updatedPost = await post.save();
+  
+      res.status(200).json(updatedPost);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+  
+  // Comment on a post
+  const commentOnPost = async (req, res) => {
+    try {
+      const post = await Post.findById(req.params.id);
+      if (!post) {
+        return res.status(404).json({ error: 'Post not found' });
+      }
+  
+      const { text } = req.body;
+      const comment = { text };
+      post.comments.push(comment);
+  
+      const updatedPost = await post.save();
+  
+      res.status(200).json(updatedPost);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+
 module.exports = {
     createPost,
     getAllPosts,
     getPostById,
     updatePostById,
     deletePostById,
+    likePost,
+    commentOnPost,
   };

@@ -15,7 +15,6 @@ router.use(session({
   cookie: { secure: false }, 
 }));
 
-
 router.post('/signup', signupUser);
 router.post('/login', loginUser);
 
@@ -34,14 +33,13 @@ router.put('/posts/:id', postController.updatePostById);
 // Delete a post by ID
 router.delete('/posts/:id', postController.deletePostById);
 
+// Like a post
+router.post('/posts/:id/like', postController.likePost);
+
+// Comment on a post
+router.post('/posts/:id/comment', postController.commentOnPost);
 
 // Get user profile
 router.get('/profile', getUserProfile);
-
-
-  
-
-// Place the /profile route after the verifyToken middleware
-
 
 module.exports = router;

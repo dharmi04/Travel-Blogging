@@ -13,6 +13,7 @@ import Home from './Pages/Home';
 import FullBlog from './components/FullBlog';
 // import Places from './Pages/Places';
 import WorldMap from './Pages/WorldMap';
+import PhotoGallery from './Pages/PhotoGallery';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/blog/:id" element={<FullBlog />} />
           {/* <Route path="/places" element={<Places />} /> */}
           <Route path="/worldmap" element={<WorldMap />} />
+          <Route path="/photogallery" element={<PhotoGallery />} />
 
         </Routes>
       </Router>
