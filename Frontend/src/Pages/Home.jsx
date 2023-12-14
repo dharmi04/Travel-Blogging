@@ -7,14 +7,14 @@ import Parisimage from '../assets/paris.jpg';
 const FloatingButton = () => {
   return (
     <a href="/addblog" className="fixed bottom-8 right-8 bg-teal-900 p-3 rounded-full cursor-pointer">
-  <span className="text-white text-xl font-bold">+</span>
-</a>
-
+      <span className="text-white text-xl font-bold">+</span>
+    </a>
   );
 };
 
 const Home = () => {
   const [featuredBlog, setFeaturedBlog] = useState(null);
+  const [additionalBlogs, setAdditionalBlogs] = useState([]);
 
   const getBlogPostById = async (postId) => {
     return {
@@ -24,17 +24,31 @@ const Home = () => {
     };
   };
 
+  const getAdditionalBlogs = async () => {
+    try {
+      // Fetch additional blog posts here using API or any other method
+      // For demonstration purposes, using static data
+      const blog2 = await getBlogPostById('657aa106218917ec1c1e5643');
+      const blog3 = await getBlogPostById('your_third_blog_id');
+  
+      setAdditionalBlogs([blog2, blog3]);
+    } catch (error) {
+      console.error('Error fetching additional blogs:', error);
+    }
+  };
+
   useEffect(() => {
     const fetchFeaturedBlog = async () => {
       const blogPost = await getBlogPostById('65742091f3203661fc728d8c');
       setFeaturedBlog(blogPost);
+      getAdditionalBlogs();
     };
 
     fetchFeaturedBlog();
   }, []);
 
   return (
-    <div className=' text-black relative'>
+    <div className='text-black relative'>
       <Nav />
       <Blob />
       <div className='flex md:flex-row flex-col space-x-7 p-6'>
@@ -53,6 +67,17 @@ const Home = () => {
           </div>
         )}
       </div>
+
+      {/* Display additional blogs directly */}
+      {/* <div className="flex space-x-4 p-4">
+        {additionalBlogs.map(blog => (
+          <div key={blog.id} className="overflow-hidden shadow-xl rounded-lg text-teal-900 p-4">
+            <div className="font-bold text-xl mb-2">{blog.title}</div>
+            <p className="text-black">{blog.content}</p>
+            <a href={`/blog/${blog.id}`} className="text-black text-sm font-normal hover:underline">Read More</a>
+          </div>
+        ))}
+      </div> */}
 
       {/* Floating '+' button */}
       <FloatingButton />

@@ -19,7 +19,7 @@ const Nav = () => {
           <div>Home</div>
           <a href="/places">Explore Places</a>
           <a href="/photogallery">Photo Gallery</a>
-          <div>Latest Blogs</div>
+          <a href="/allblog">Latest Blogs</a>
           <div>Categories</div>
           <a href="/worldmap">World Map</a>
           <a href="/signup">Signup</a>
