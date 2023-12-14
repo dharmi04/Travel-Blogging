@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Nav from './Nav';
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
@@ -19,7 +20,9 @@ const BlogList = () => {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto my-8">
+    <div>
+      <Nav />
+      <div className="max-w-2xl mx-auto my-8">
       <h2 className="text-3xl font-bold mb-4 text-center">Explore Our Blogs</h2>
       <div className='flex md:flex-row flex-col md:space-x-6 space-y-4 pl-6 pr-6'>
       {posts.map((post) => (
@@ -33,6 +36,7 @@ const BlogList = () => {
       ))}
       </div>
       
+    </div>
     </div>
   );
 };
