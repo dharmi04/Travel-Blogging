@@ -42,7 +42,11 @@ Happy Travels!
 
 
 ## Backend Setup
-###Clone the repository 
+
+### Prerequisites
+Make sure you have Node.js and MongoDB installed on your machine before proceeding.
+
+### Clone the repository 
 ```bash
 git clone "https://github.com/dharmi04/Travel-Blogging"
 ```
@@ -62,7 +66,14 @@ Run the following command to install the necessary dependencies:
 npm install
 ```
 
-### 3. Start the Backend Server
+### 3. Configure MongoDB
+Make sure your MongoDB instance is running. Update the database connection settings in the .env file:
+
+```bash
+MONGODB_URI=mongodb://localhost:5000/wanderlast
+```
+
+### 4. Start the Backend Server
 
 Once the installation is complete, start the backend server:
 
@@ -90,8 +101,13 @@ Run the following command to install the frontend dependencies:
 ```bash
 npm install
 ```
+### 3. Configure API Endpoint
+Update the API endpoint in the .env file to match your backend server:
 
-### 3. Start the Frontend Development Server
+```bash
+REACT_APP_API_URL=http://localhost:5000
+```
+### 4. Start the Frontend Development Server
 
 After the installation is complete, start the frontend development server:
 
