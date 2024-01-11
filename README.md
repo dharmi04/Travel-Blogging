@@ -37,3 +37,72 @@ Use Wanderlast Chronicles to plan your upcoming trips efficiently. Browse throug
 
 
 Happy Travels!
+
+ Setup Guide
+
+
+## Backend Setup
+###Clone the repository 
+```bash
+git clone "https://github.com/dharmi04/Travel-Blogging"
+```
+
+### 1. Navigate to the Backend Folder
+
+
+```bash
+cd Backend
+```
+
+### 2. Install Dependencies
+
+Run the following command to install the necessary dependencies:
+
+```bash
+npm install
+```
+
+### 3. Start the Backend Server
+
+Once the installation is complete, start the backend server:
+
+```bash
+npm run start
+```
+
+Your backend server should now be up and running at the specified port . Make sure there are no errors in the console.
+Make sure to add your database (MongoDb) :)
+
+## Frontend Setup
+
+### 1. Navigate to the Frontend Folder
+
+Open a new terminal or command prompt window and navigate to the 'Frontend' folder:
+
+```bash
+cd Frontend
+```
+
+### 2. Install Dependencies
+
+Run the following command to install the frontend dependencies:
+
+```bash
+npm install
+```
+
+### 3. Start the Frontend Development Server
+
+After the installation is complete, start the frontend development server:
+
+```bash
+npm run dev
+```
+
+This will launch the development server, and you should see information about the server and the application running in the console.
+
+### 4. Access Wanderlast Chronicles
+
+Open your web browser and go to `http://localhost:5173` (or the specified port if different). You should now see the Wanderlast Chronicles website up and running.
+
+
