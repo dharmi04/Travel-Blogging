@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Nav from '../components/Nav';
 import Blob from '../components/Blob';
 import Parisimage from '../assets/paris.jpg';
+import BlogList from '../components/BlogList';
 
 // New component for the floating '+' sign
 const FloatingButton = () => {
@@ -55,70 +56,8 @@ const Home = () => {
           </div>
         )}
       </div>
-{/* 
-  //section-2 */}
-      <div className='flex flex-row'>
-
-        {/* //BLOG-1 */}
-      <div className='flex  flex-col p-6 w-[2500px]'>
-        <div className=''>
-          <img src={Parisimage} alt="paris" className='rounded-lg' />
-        </div>
-        {featuredBlog && (
-          <div className=" overflow-hidden shadow-xl rounded-lg text-teal-900 transform transition-transform hover:scale-105">
-            <div className=" p-4">
-              <div className="font-bold text-xl mb-2 font-sans ">{featuredBlog.title}</div>
-              <p className="text-black text-sm">{featuredBlog.content}</p>
-            </div>
-            <div className="md:px-6 py-4">
-              <a href={`/blog/${featuredBlog.id}`} className="text-black text-sm font-normal hover:underline">Read More</a>
-            </div>
-          </div>
-        )}
-      </div>
-
-
-          {/* //BLOG-2 */}
-      <div className='flex  flex-col space-x-7 p-6 w-[2500px]'>
-        <div className=''>
-          <img src={Parisimage} alt="paris" className='rounded-lg' />
-        </div>
-        {featuredBlog && (
-          <div className=" overflow-hidden shadow-xl rounded-lg text-teal-900 transform transition-transform hover:scale-105">
-            <div className=" p-4">
-              <div className="font-bold text-xl mb-2 font-sans ">{featuredBlog.title}</div>
-              <p className="text-black text-sm">{featuredBlog.content}</p>
-            </div>
-            <div className="md:px-6 py-4">
-              <a href={`/blog/${featuredBlog.id}`} className="text-black text-sm font-normal hover:underline">Read More</a>
-            </div>
-          </div>
-        )}
-      </div>
-
-          {/* //BLOG-3 */}
-      <div className='flex  flex-col space-x-7 p-6 w-[2500px]'>
-        <div className=''>
-          <img src={Parisimage} alt="paris" className='rounded-lg' />
-        </div>
-        {featuredBlog && (
-          <div className=" overflow-hidden shadow-xl rounded-lg text-teal-900 transform transition-transform hover:scale-105">
-            <div className=" p-4">
-              <div className="font-bold text-xl mb-2 font-sans ">{featuredBlog.title}</div>
-              <p className="text-black text-sm">{featuredBlog.content}</p>
-            </div>
-            <div className="md:px-6 py-4">
-              <a href={`/blog/${featuredBlog.id}`} className="text-black text-sm font-normal hover:underline">Read More</a>
-            </div>
-          </div>
-        )}
-      </div>
-
+      <BlogList />
       
-
-      </div>
-
-      {/* Floating '+' button */}
       <FloatingButton />
     </div>
   );

@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 const AddPost = () => {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     desc: '',
   });
+
+  
 
   const handleChange = (value) => {
     setFormData({
@@ -21,9 +26,17 @@ const AddPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Check if user is logged in
+      if (!isLoggedIn) {
+        toast.error('Please log in to add a post');
+        return;
+      }
+
       const response = await axios.post("http://localhost:5000/api/posts", formData);
 
       console.log("Post added successfully", response.data);
+      // Redirect to posts page or do other actions upon successful post creation
+      navigate('/posts');
     } catch (error) {
       console.error('Error adding post:', error.message);
     }
@@ -52,7 +65,7 @@ const AddPost = () => {
             Description
           </label>
           <ReactQuill
-          className='h-96'
+            className='h-96'
             value={formData.desc}
             onChange={handleChange}
             placeholder="Enter description"

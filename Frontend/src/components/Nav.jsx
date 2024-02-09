@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBars } from 'react-icons/fa'; // Import the hamburger icon
+import { FaBars, FaTimes } from 'react-icons/fa'; // Import the hamburger icon
 import logo from '../assets/logo.png';
 
 const Nav = () => {
@@ -16,17 +16,21 @@ const Nav = () => {
           <img src={logo} className='h-12 md:w-40 w-[150px]' alt='Logo' />
         </div>
         <div className='hidden md:flex md:space-x-8 font-sans'>
-          <div>Home</div>
+          <a href="/">Home</a>
           <a href="/places">Explore Places</a>
           <a href="/photogallery">Photo Gallery</a>
           <a href="/allblog">Latest Blogs</a>
-          <div>Categories</div>
+          <a href="/categories">Categories</a>
           <a href="/worldmap">World Map</a>
           <a href="/signup">Signup</a>
         </div>
         <div className='md:hidden'>
         
+        {isNavOpen ? (
+          <FaTimes onClick={toggleNav} className='cursor-pointer' />
+        ) : (
           <FaBars onClick={toggleNav} className='cursor-pointer' />
+        )}
         </div>
 
       </div>
