@@ -9,7 +9,13 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(cors())
+app.use(cors(
+  {
+    origin: ["https://travel-blogging-qemkynokn-dharmi04.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+))
 // app.use(
 //   session({
 //     secret: process.env.SECRET || 'your-secret-key',
