@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
   {
-    origin: ["https://travel-blogging-qemkynokn-dharmi04.vercel.app/"],
+    origin: ["https://travel-blogging.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
   }
