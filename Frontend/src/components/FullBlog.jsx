@@ -12,7 +12,7 @@ const FullBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`https://travel-blogging-1gb9.vercel.app/api/posts/${id}`);
+        const response = await axios.get(`https://travel-blogging-uvm4.vercel.app/api/posts/${id}`);
         setBlog(response.data);
         setLikes(response.data.likes);
         // Check if the user has liked the blog

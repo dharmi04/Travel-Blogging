@@ -22,7 +22,7 @@ const Signup = () => {
     e.preventDefault();
     // Add your signup logic here
     axios
-      .post("https://travel-blogging-1gb9.vercel.app/api/signup", formData)
+      .post("https://travel-blogging-uvm4.vercel.app/api/signup", formData)
       .then(response => {
         console.log(response);
         navigate('/');

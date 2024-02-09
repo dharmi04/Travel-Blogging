@@ -21,7 +21,7 @@ const Login = () => {
     e.preventDefault();
     // Add your login logic here
     axios
-      .post("https://travel-blogging-1gb9.vercel.app/api/login", formData)
+      .post("https://travel-blogging-uvm4.vercel.app/api/login", formData)
       .then(response => {
         console.log(response);
         navigate('/');

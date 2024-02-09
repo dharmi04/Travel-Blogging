@@ -32,7 +32,7 @@ const AddPost = () => {
         return;
       }
 
-      const response = await axios.post("https://travel-blogging-1gb9.vercel.app/api/posts", formData);
+      const response = await axios.post("https://travel-blogging-uvm4.vercel.app/api/posts", formData);
 
       console.log("Post added successfully", response.data);
       // Redirect to posts page or do other actions upon successful post creation

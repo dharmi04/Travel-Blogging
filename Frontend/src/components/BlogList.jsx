@@ -9,7 +9,7 @@ const BlogList = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('https://travel-blogging-1gb9.vercel.app/api/posts');
+        const response = await axios.get('https://travel-blogging-uvm4.vercel.app/api/posts');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error.message);
