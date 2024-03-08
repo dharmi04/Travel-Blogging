@@ -12,7 +12,7 @@ const FullBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`https://travel-blogging-uvm4.vercel.app/api/posts/${id}`);
+        const response = await axios.get(`https://travel-backend-1-rssw.onrender.com/api/posts/${id}`);
         setBlog(response.data);
         setLikes(response.data.likes);
         // Check if the user has liked the blog
@@ -28,7 +28,7 @@ const FullBlog = () => {
   const handleLike = async () => {
     try {
       // Toggle the like state
-      const response = await axios.post(`http://localhost:5000/api/posts/${id}/like`);
+      const response = await axios.post(`https://travel-backend-1-rssw.onrender.com/api/posts/${id}/like`);
       setLikes(response.data.likes);
       setIsLiked(!isLiked);
     } catch (error) {
